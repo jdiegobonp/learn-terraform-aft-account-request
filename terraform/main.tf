@@ -75,3 +75,28 @@ module "SIEM" {
 
   account_customizations_name = "Security-SIEM"
 }
+
+
+module "SIEM2" {
+  source = "./modules/aft-account-request"
+
+  control_tower_parameters = {
+    AccountEmail              = "siem2+jdiegobonp@gmail.com"
+    AccountName               = "SIEM2"
+    ManagedOrganizationalUnit = "Sandbox"
+    SSOUserEmail              = "siem2+jdiegobonp@gmail.com"
+    SSOUserFirstName          = "siem2"
+    SSOUserLastName           = "Admin"
+  }
+
+  account_tags = {
+    "Learn Tutorial" = "AFT"
+  }
+
+  change_management_parameters = {
+    change_requested_by = "SIEM2"
+    change_reason       = "Creating new Security AWS account with Route53"
+  }
+
+  account_customizations_name = "Security-SIEM2"
+}
