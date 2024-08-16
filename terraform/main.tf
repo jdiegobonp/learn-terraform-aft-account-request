@@ -25,3 +25,28 @@ module "sandbox" {
 
   account_customizations_name = "sandbox"
 }
+
+
+module "SIEM" {
+  source = "./modules/aft-account-request"
+
+  control_tower_parameters = {
+    AccountEmail              = "siem+jdiegobonp@gmail.com"
+    AccountName               = "SIEM"
+    ManagedOrganizationalUnit = "Sandbox"
+    SSOUserEmail              = "siem+jdiegobonp@gmail.com"
+    SSOUserFirstName          = "siem"
+    SSOUserLastName           = "Admin"
+  }
+
+  account_tags = {
+    "Learn Tutorial" = "AFT"
+  }
+
+  change_management_parameters = {
+    change_requested_by = "SIEM"
+    change_reason       = "Create new Security AWS account"
+  }
+
+  account_customizations_name = "Security-SIEM"
+}
